@@ -105,4 +105,3 @@ changed_bits_count = calculate_changed_bits(original_hash, modified_hash)
 print(f"Changed Bits Count: {changed_bits_count}")
 
 print(calculate_time(message))
-
