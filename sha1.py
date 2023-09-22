@@ -71,4 +71,7 @@ def sha1(data):
     return '%08x%08x%08x%08x%08x' % (const_a, const_b, const_c, const_d, const_e)
 
 
-print(sha1("hello world"))
+message = "Security"
+hash_function = sha1(message)
+print(f"{'='*30}\n{' '*5}Hash-functions SHA-1\n{'='*30}")
+print(f"Message -> {message}\nSHA-1 -> {hash_function}")
