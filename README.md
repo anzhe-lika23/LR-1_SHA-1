@@ -1,7 +1,7 @@
 # LR-1_sha1
 Cryptographic labs, hash function
 
-Що таке SHA-1?
+SHA-1?
 
 Алгоритм SНА-1 (Secure Hash Algorithm) - криптографiчна хеш-функцiя призначена для обчислення з повiдомлення довжиною до 264 бiтiв 
 значення довжиною 160 бiтiв. SНА-1 розроблений у США в рамках стандарту безпечного хешування SHS (Secure Hash Standard) в 1992 р. 
@@ -9,6 +9,7 @@ Cryptographic labs, hash function
 
 Modules:
 - time -> (access and conversion time)
+- csv -> (table)
 
 Example:
 
@@ -17,3 +18,7 @@ Example:
 Check:
 
 ![image](https://github.com/anzhe-lika23/LR-1_sha1/assets/142719544/7c1f5478-2b5f-43a4-b1aa-b0c3dc94b8e0)
+
+Graph (dependency graph):
+
+![dependency-graph](https://github.com/anzhe-lika23/LR-1_SHA-1/assets/142719544/28b81549-309a-4517-be13-0caf616b7e6d)
