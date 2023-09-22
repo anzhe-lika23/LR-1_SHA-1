@@ -1,3 +1,6 @@
+import time
+
+
 def sha1(data):
     bytes_string = ""
 
@@ -71,7 +74,35 @@ def sha1(data):
     return '%08x%08x%08x%08x%08x' % (const_a, const_b, const_c, const_d, const_e)
 
 
+# Рахуємо кількість різних бітів між двома хешами
+def calculate_changed_bits(origin_hash, modif_hash):
+    xor_result = int(origin_hash, 16) ^ int(modif_hash, 16)
+    return bin(xor_result).count('1')
+
+
+# Вимірюємо швидкість виконання
+def calculate_time(mes):
+    start_time = time.time()
+    sha1(mes)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return f"Execution Time: {execution_time} seconds"
+
+
 message = "Security"
-hash_function = sha1(message)
-print(f"{'='*30}\n{' '*5}Hash-functions SHA-1\n{'='*30}")
-print(f"Message -> {message}\nSHA-1 -> {hash_function}")
+original_hash = sha1(message)
+
+print(f"{'=' * 30}\n{' ' * 5}Hash-functions SHA-1\n{'=' * 30}")
+print(f"Message -> {message}\nSHA-1 (Original) -> {original_hash}")
+
+# Змінюємо один біт в тексті повідомлення
+modified_message = message[:4] + "a" + message[5:]
+modified_hash = sha1(modified_message)
+print(f"Modified Message -> {modified_message}\nSHA-1 (Modified) -> {modified_hash}")
+
+# Рахуємо кількість змінених бітів
+changed_bits_count = calculate_changed_bits(original_hash, modified_hash)
+print(f"Changed Bits Count: {changed_bits_count}")
+
+print(calculate_time(message))
+
