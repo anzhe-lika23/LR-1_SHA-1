@@ -1,4 +1,5 @@
 import time
+import csv
 
 
 def sha1(data):
@@ -80,6 +81,21 @@ def calculate_changed_bits(origin_hash, modif_hash):
     return bin(xor_result).count('1')
 
 
+def collect_and_save_bit_changes(hash_orig, hash_modify, out_file):
+    changes = []
+    for i in range(len(hash_orig)):
+        if hash_orig[i] != hash_modify[i]:
+            changes.append(i)
+
+    with open(out_file, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(['Round', 'Changed Bits'])
+        for i, bit_position in enumerate(changes):
+            csvwriter.writerow([i + 1, bit_position])
+
+    print(f"Bit changes saved to {out_file}")
+
+
 # Вимірюємо швидкість виконання
 def calculate_time(mes):
     start_time = time.time()
@@ -89,7 +105,7 @@ def calculate_time(mes):
     return f"Execution Time: {execution_time} seconds"
 
 
-message = "Security"
+message = "Security is well"
 original_hash = sha1(message)
 
 print(f"{'=' * 30}\n{' ' * 5}Hash-functions SHA-1\n{'=' * 30}")
@@ -103,5 +119,9 @@ print(f"Modified Message -> {modified_message}\nSHA-1 (Modified) -> {modified_ha
 # Рахуємо кількість змінених бітів
 changed_bits_count = calculate_changed_bits(original_hash, modified_hash)
 print(f"Changed Bits Count: {changed_bits_count}")
+
+# Збираємо і зберігаємо дані про зміну бітів
+output_file = 'bit_changes.csv'
+collect_and_save_bit_changes(original_hash, modified_hash, output_file)
 
 print(calculate_time(message))
