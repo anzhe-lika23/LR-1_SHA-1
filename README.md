@@ -13,3 +13,7 @@ Modules:
 Example:
 
 ![Output_code](https://github.com/anzhe-lika23/LR-1_sha1/assets/142719544/2ce32fac-0249-492f-992f-a2741b4c1c74)
+
+Check:
+
+![image](https://github.com/anzhe-lika23/LR-1_sha1/assets/142719544/7c1f5478-2b5f-43a4-b1aa-b0c3dc94b8e0)
